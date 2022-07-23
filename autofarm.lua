@@ -7,13 +7,17 @@ honestly the devs for this game are so shitty releasing a game that doesnt look 
 
 local dead = false
 local event = game.ReplicatedStorage.Events.DataEvent
+function grabtrinkets(trinkets)
+    event:FireServer("PickUp",trinkets)
+end
 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2865.08813, 456.738953, -1090.94714, 1, 0, 0, 0, 1, 0, 0, 0, 1)
 task.wait(0.5)
 game.Players.LocalPlayer.Character.HumanoidRootPart.RootJoint:Destroy()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = true
-function grabtrinkets(trinkets)
-    event:FireServer("PickUp",trinkets)
+
+for _,v in next, getconnections(game.Players.LocalPlayer.Idled) do
+v:Disable()
 end
 
 game.ReplicatedStorage.ChildAdded:connect(function(ae)
